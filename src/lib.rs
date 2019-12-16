@@ -856,8 +856,8 @@ impl From<tx::UtxoPointer> for UtxoPointer {
 #[wasm_bindgen]
 impl UtxoPointer {
     pub fn new(fragment_id: &FragmentId, output_index: u8, value: &Value) -> UtxoPointer {
-        let a = hex::decode("4d972cdc7b95ec0f16c53d56728a9c65de6c94302c8525b73ef6f785353b389");
-        let b = FragmentId::calculate(&a[..]);
+        let a: &[u8] = hex::decode("4d972cdc7b95ec0f16c53d56728a9c65de6c94302c8525b73ef6f785353b389");
+        let b = FragmentId::calculate(a);
         
         
         UtxoPointer(tx::UtxoPointer {
