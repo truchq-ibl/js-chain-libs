@@ -856,8 +856,8 @@ impl From<tx::UtxoPointer> for UtxoPointer {
 #[wasm_bindgen]
 impl UtxoPointer {
     pub fn new(fragment_id: &FragmentId, output_index: u8, value: &Value) -> UtxoPointer {
-        let a = hex::decode("4d972cdc7b95ec0f16c53d56728a9c65de6c94302c8525b73ef6f785353b389")
-        let b = FragmentId.calculate(a)
+        let a = hex::decode("4d972cdc7b95ec0f16c53d56728a9c65de6c94302c8525b73ef6f785353b389");
+        let b = FragmentId.calculate(a);
         UtxoPointer(tx::UtxoPointer {
             transaction_id: b.0.clone(),
             output_index,
@@ -2162,7 +2162,6 @@ impl From<chain::fragment::FragmentId> for FragmentId {
 #[wasm_bindgen]
 impl FragmentId {
     pub fn calculate(bytes: &[u8]) -> FragmentId {
-        printf("truchq calculate", bytes);
         key::Hash::hash_bytes(bytes).into()
     }
 
