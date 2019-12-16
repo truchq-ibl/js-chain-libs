@@ -859,7 +859,7 @@ impl UtxoPointer {
         let a = "4d972cdc7b95ec0f16c53d56728a9c65de6c94302c8525b73ef6f785353b3898";
         UtxoPointer(tx::UtxoPointer {
             transaction_id: key::Hash::hash_bytes(a.as_bytes()).into(),
-            0,
+            output_index: 0,
             value: value.0,
         })
     }
