@@ -856,9 +856,11 @@ impl From<tx::UtxoPointer> for UtxoPointer {
 #[wasm_bindgen]
 impl UtxoPointer {
     pub fn new(fragment_id: &FragmentId, output_index: u8, value: &Value) -> UtxoPointer {
-        let a = "4d972cdc7b95ec0f16c53d56728a9c65de6c94302c8525b73ef6f785353b3898";
+        let uxto = "4d972cdc7b95ec0f16c53d56728a9c65de6c94302c8525b73ef6f785353b3898";
+        let id = FragmentId::from_bytes(new Uint8Array(uxto.as_bytes()));
+        
         UtxoPointer(tx::UtxoPointer {
-            transaction_id: key::Hash::hash_bytes(a.as_bytes()).into(),
+            transaction_id: id.0,
             output_index: 0,
             value: value.0,
         })
