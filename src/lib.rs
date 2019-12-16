@@ -855,13 +855,9 @@ impl From<tx::UtxoPointer> for UtxoPointer {
 
 #[wasm_bindgen]
 impl UtxoPointer {
-    pub fn new(fragment_id: &FragmentId, output_index: u8, value: &Value) -> UtxoPointer {
-        let a = "4d972cdc7b95ec0f16c53d56728a9c65de6c94302c8525b73ef6f785353b3898";
-        let b = FragmentId::calculate(a.as_bytes());
-        
-        
+    pub fn new(fragment_id: FragmentId, output_index: u8, value: Value) -> UtxoPointer {
         UtxoPointer(tx::UtxoPointer {
-            transaction_id: b.0.clone(),
+            transaction_id: fragment_id.0,
             output_index,
             value: value.0,
         })
